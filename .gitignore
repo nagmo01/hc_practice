@@ -2,4 +2,4 @@
 rails-docker/
 
 #.DS_Storeを隠す（mac特有の設定ファイルらしい実行には影響しない）
-.DS_Store
+/.DS_Store
