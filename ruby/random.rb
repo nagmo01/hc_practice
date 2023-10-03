@@ -21,10 +21,11 @@ else
   #Aグループ2人、とBグループ4人にわける
   a = members.shift(2)
   b = members
-
-
   
 end
+
+a.sort!
+b.sort!
 
 puts "#{group}でグループ通話を行なっています"
 puts "Aグループは #{a.join(', ')}の#{a.size}人です"
