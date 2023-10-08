@@ -2,32 +2,10 @@
 members = ["A", "B", "C", "D", "E", "F"].shuffle
 
 # 3:3の通話か2:4の通話にするかを決める
-group = ["3-3", "2-4"].sample
+group = [2, 3].sample
 
+a = members.shift(group)
+b = members
 
-# 3-3 の場合
-if group == "3-3"
-
-  
-  #Aグループ3人、とBグループ3人にわける
-  #shiftメソッドは配列から引数分取り出す破壊的メソッド
-  a = members.shift(3)
-  b = members
-
-
-
-else
-
-  #Aグループ2人、とBグループ4人にわける
-  a = members.shift(2)
-  b = members
-  
-end
-
-a.sort!
-b.sort!
-
-puts "#{group}でグループ通話を行なっています"
-puts "Aグループは #{a.join(', ')}の#{a.size}人です"
-puts "Bグループは #{b.join(', ')}の#{b.size}人です"
-
+p a.sort
+p b.sort
