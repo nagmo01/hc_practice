@@ -46,21 +46,25 @@ puts "月 火 水 木 金 土 日\n"
 # iは実際にカレンダーの日数を出力したときに加算していくカウンタ
 # dはループ回数自体で加算していくカウンタにしていて、月〜日の７回ごとに改行を挟むために利用します。
 i = 1
-d = 1
+
+
+print '   ' * month_start
 
 while i <= last_day
 
-  if d <= month_start
-    print '   '
+  printf('%2d', i)
+  print ' '
 
-  else
-    printf('%2d', i)
-    print ' '
-    i += 1
+  i += 1
+  month_start += 1
+
+  print "\n" if (month_start % 7).zero?
+
+=begin
+  if month_start == 7
+    print "\n"
+    month_start = 0
   end
-
-  print "\n" if (d % 7).zero?
-
-  d += 1
+=end
 
 end
