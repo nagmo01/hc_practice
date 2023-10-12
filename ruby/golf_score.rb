@@ -30,7 +30,7 @@ score_names = {
 result = []
 
 x.zip(y) do |hole, player|
-  score = hole - player
+  score = player - hole
 
   if player == 1 && [3, 4].include?(hole)
     result.push('ホールインワン')
