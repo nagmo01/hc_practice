@@ -47,7 +47,6 @@ puts "月 火 水 木 金 土 日\n"
 # dはループ回数自体で加算していくカウンタにしていて、月〜日の７回ごとに改行を挟むために利用します。
 i = 1
 
-
 print '   ' * month_start
 
 while i <= last_day
@@ -60,11 +59,9 @@ while i <= last_day
 
   print "\n" if (month_start % 7).zero?
 
-=begin
-  if month_start == 7
-    print "\n"
-    month_start = 0
-  end
-=end
+  #   if month_start == 7
+  #     print "\n"
+  #     month_start = 0
+  #   end
 
 end
