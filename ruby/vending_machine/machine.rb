@@ -1,22 +1,14 @@
 class Machine
-
   def initialize
-    drink1 = Drink.new("ペプシ", 150, 5)
-    drink2 = Drink.new("モンスター", 230, 5)
-    drink3 = Drink.new("いろはす", 120, 5)
+    drink1 = Drink.new('ペプシ', 150, 5)
+    drink2 = Drink.new('モンスター', 230, 5)
+    drink3 = Drink.new('いろはす', 120, 5)
 
     @sales = 0
     @drinks = [drink1, drink2, drink3]
-
   end
 
-  def drink
-    @drink
-  end
-
-  def sales
-    @sales
-  end
+  attr_reader :drink, :sales
 
   def drinkList
     @drinks.each do |drink|
@@ -28,22 +20,17 @@ class Machine
     list = []
 
     @drinks.each do |drink|
-      if drink.stock > 0
-        list.push(drink.name)
-      end
+      list.push(drink.name) if drink.stock > 0
     end
-    return list
+    list
   end
 
   def getDrink(name)
-
     @drinks.each do |drink|
-      if drink.name == name
-        return drink
-      end
+      return drink if drink.name == name
     end
   end
-  
+
   def buy(name, suica)
     drink = getDrink(name)
     if onSale.include?(name) && suica.deposit > drink.price
@@ -51,18 +38,13 @@ class Machine
       suica.deposit = suica.deposit - drink.price
       @sales += drink.price
     else
-      puts "例外"
+      raise '例外が発生しました'
     end
   end
 
   def chargeDrink(name, stock)
     @drinks.each do |drink|
-      if drink.name == name
-        drink.stock = drink.stock + stock
-      end
+      drink.stock = drink.stock + stock if drink.name == name
     end
   end
-
 end
-
-

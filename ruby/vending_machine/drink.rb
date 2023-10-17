@@ -5,23 +5,6 @@ class Drink
     @stock = stock
   end
 
-  def name
-    @name
-  end
-
-  def price
-    @price
-  end
-
-  def stock
-    @stock
-  end
-
-  def stock=(stock)
-    @stock = stock
-  end
-
-
+  attr_accessor :stock
+  attr_reader :name, :price
 end
-
-
