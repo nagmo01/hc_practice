@@ -4,12 +4,15 @@ require_relative 'Suica'
 
 suica = Suica.new
 machine = Machine.new
-
+suica.charge = 200
 machine.drinkList
-machine.chargeDrink('ペプシ', 20)
 
-machine.buy('いろはす', suica)
-machine.buy('モンスター', suica)
 
+
+machine.buy("いろはす", suica)
+machine.chargeDrink("ペプシ",100)
+machine.buy("いろはす", suica)
+machine.buy("モンスター", suica)
 machine.drinkList
+puts suica.deposit
 puts machine.sales

@@ -1,10 +1,15 @@
 class Drink
-  def initialize(name, price, stock)
+  def initialize(name, price)
     @name = name
     @price = price
-    @stock = stock
   end
 
-  attr_accessor :stock
-  attr_reader :name, :price
+  def name
+    @name
+  end
+  
+  def price
+    @price
+  end
 end
+

@@ -3,13 +3,24 @@ class Suica
     @deposit = 500
   end
 
-  attr_accessor :deposit
+
+  def deposit
+    @deposit
+  end
+
 
   def charge=(deposit)
     if deposit > 100
-      @deposit = deposit
+      @deposit = @deposit + deposit
     else
-      raise '例外が発生しました'
+      raise "最低金額以下です"
     end
   end
+
+
+  def deposit=(deposit)
+    @deposit = deposit
+  end
+
 end
+

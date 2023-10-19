@@ -1,50 +1,69 @@
 class Machine
+
   def initialize
-    drink1 = Drink.new('ペプシ', 150, 5)
-    drink2 = Drink.new('モンスター', 230, 5)
-    drink3 = Drink.new('いろはす', 120, 5)
-
+    @drinks = []
+    5.times do
+      @drinks.push(Drink.new('ペプシ',150))
+      @drinks.push(Drink.new('いろはす', 120))
+      @drinks.push(Drink.new('モンスター', 230))
+    end
+    @drinkList = {'ペプシ':150, 'いろはす': 120, 'モンスター': 230}
     @sales = 0
-    @drinks = [drink1, drink2, drink3]
   end
 
-  attr_reader :drink, :sales
+  def drinks
+    @drinks
+  end
 
+  def sales
+    @sales
+  end
+  
   def drinkList
+    a = 0
+    b = 0
+    c = 0
     @drinks.each do |drink|
-      p "#{drink.name},#{drink.stock}"
+      case drink.name
+      when "ペプシ" then
+        a += 1
+      when "いろはす" then
+        b += 1
+      when "モンスター" then
+        c += 1
+      end
     end
+
+    puts "ペプシ:#{a}本、いろはす:#{b}本、モンスター:#{c}本"
   end
 
-  def onSale
-    list = []
-
-    @drinks.each do |drink|
-      list.push(drink.name) if drink.stock > 0
-    end
-    list
-  end
 
   def getDrink(name)
+
     @drinks.each do |drink|
-      return drink if drink.name == name
+      if drink.name == name
+        return drink
+      end
     end
   end
 
-  def buy(name, suica)
+  def buy(name,suica)
     drink = getDrink(name)
-    if onSale.include?(name) && suica.deposit > drink.price
-      drink.stock = drink.stock - 1
+    if suica.deposit > drink.price
+      @drinks.delete(drink)
       suica.deposit = suica.deposit - drink.price
       @sales += drink.price
     else
-      raise '例外が発生しました'
+      raise "お金が足りません"
     end
   end
 
   def chargeDrink(name, stock)
-    @drinks.each do |drink|
-      drink.stock = drink.stock + stock if drink.name == name
+    stock.times do
+      @drinks.push(Drink.new(name,@drinkList[name]))
     end
   end
+
+
 end
+
