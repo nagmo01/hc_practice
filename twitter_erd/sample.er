@@ -30,7 +30,7 @@
 [follows] {bgcolor: "#d0e0d0"}
   *id {label: "bigint, not null"}
   followers_id {label: "bigint, not null, FK(users)"}
-  followed_by_id {label: "bigint, not null, FK(users)"}
+  followed_id {label: "bigint, not null, FK(users)"}
   created_at { label: "datatime, not null"}
   updated_at { label: "datatime, not null"}
 
